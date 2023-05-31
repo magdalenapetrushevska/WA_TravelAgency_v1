@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WA_TravelAgency_v1.Data;
 using WA_TravelAgency_v1.Models.DomainModels;
-using WA_TravelAgency_v1.Models.Enums;
 
 namespace WA_TravelAgency_v1.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
     public class OfferParametersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -60,7 +57,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DiscountForChildren,Discount,МinDaysForReservation,OfferId,Id")] OfferParameters offerParameters)
+        public async Task<IActionResult> Create([Bind("МinNumOfPassengersForSureRealization,МinNumOfPassForGratis,OfferId,Id")] OfferParameters offerParameters)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +92,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("DiscountForChildren,Discount,МinDaysForReservation,OfferId,Id")] OfferParameters offerParameters)
+        public async Task<IActionResult> Edit(Guid id, [Bind("МinNumOfPassengersForSureRealization,МinNumOfPassForGratis,OfferId,Id")] OfferParameters offerParameters)
         {
             if (id != offerParameters.Id)
             {
