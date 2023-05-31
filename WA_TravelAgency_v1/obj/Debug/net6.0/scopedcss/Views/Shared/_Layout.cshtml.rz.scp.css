@@ -1,0 +1,53 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-ju0jx35tnv] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-ju0jx35tnv] {
+  color: #0077cc;
+}
+
+.btn-primary[b-ju0jx35tnv] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-ju0jx35tnv], .nav-pills .show > .nav-link[b-ju0jx35tnv] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-ju0jx35tnv] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-ju0jx35tnv] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-ju0jx35tnv] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-ju0jx35tnv] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-ju0jx35tnv] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+.background-radial-gradient[b-ju0jx35tnv] {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+}

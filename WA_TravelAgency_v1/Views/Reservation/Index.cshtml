@@ -1,0 +1,97 @@
+﻿@using Microsoft.Extensions.Options;
+@model IEnumerable<WA_TravelAgency_v1.Models.DomainModels.Reservation>
+@inject IOptions<WA_TravelAgency_v1.Models.DomainModels.StripeSettings> Stripe
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reservations</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountToPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountPaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Offer)
+            </th>
+            <td>
+                @Html.DisplayNameFor(model => model.NumOfPassengers)
+            </td>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountToPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Offer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfPassengers)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (item.Paid.ToString() == "No")
+                    {
+                        <form asp-controller="Reservation" asp-action="PayOrder" asp-route-id="@item.Id" method="post">
+                            <article>
+                                <script src="https://checkout.stripe.com/checkout.js"
+                                        class="stripe-button"
+                                        data-key=@Stripe.Value.PublishableKey
+                                        data-locale="auto"
+                                        data-description="Payment"
+                                        data-amount="@(item.AmountToPay * 100)"
+                                        data-label="Pay $@item.AmountToPay">
+                                </script>
+                            </article>
+                        </form>
+                    }
+                    else
+                    {
+                        <br />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-wallet" viewBox="0 0 16 16">
+                            <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z" />
+                        </svg>
+
+                        <p><b>PAID</b></p>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
