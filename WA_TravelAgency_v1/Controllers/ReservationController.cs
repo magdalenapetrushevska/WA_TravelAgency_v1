@@ -68,7 +68,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OfferId,AmountToPay,ReservationDate,Paid,AmountPaid,Status,Id")] Reservation reservation)
+        public async Task<IActionResult> Create([Bind("OfferId,AmountToPay,ReservationDate,Paid,AmountPaid,Status,NumOfPassengers,Id")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,15 @@ namespace WA_TravelAgency_v1.Controllers
                 reservation.Passenger = loggedInUser;
 
                 Offer chosenOffer = _context.Offers.Find(reservation.OfferId);
-                reservation.AmountToPay = chosenOffer.PricePerPerson;
+                if(chosenOffer.OfferParameters.МinNumOfPassForGratis <= reservation.NumOfPassengers)
+                {
+                    var numOfGratis = reservation.NumOfPassengers % chosenOffer.OfferParameters.МinNumOfPassForGratis;
+                    reservation.AmountPaid = chosenOffer.PricePerPerson * (reservation.NumOfPassengers - numOfGratis);
+                }
+                else
+                {
+                    reservation.AmountToPay = chosenOffer.PricePerPerson * reservation.NumOfPassengers;
+                }
                 reservation.AmountPaid = Constants.initialPaidAmount;
                 reservation.Paid = NoYes.No;
                 reservation.Status = OfferStatus.Active;

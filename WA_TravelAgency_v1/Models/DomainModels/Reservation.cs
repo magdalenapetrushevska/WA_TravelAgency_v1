@@ -21,6 +21,8 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public ApplicationUser? Passenger { get; set; }
         [Display(Name = "Number of passengers")]
         public int NumOfPassengers { get; set; }
+        [Display(Name = "Number of gratis")]
+        public int NumOfGratis { get; set; }
 
     }
 
