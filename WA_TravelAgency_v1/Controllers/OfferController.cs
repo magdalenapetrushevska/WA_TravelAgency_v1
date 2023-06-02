@@ -98,7 +98,7 @@ namespace WA_TravelAgency_v1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Country", offer.DestinationId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
             ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
             return View(offer);
         }
@@ -116,7 +116,7 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 return NotFound();
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Country", offer.DestinationId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
             ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
             return View(offer);
         }
@@ -126,7 +126,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("TransportId,DestinationId,Type,PricePerPerson,FromDate,ToDate,Status,Id")] Offer offer)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Name,TransportId,DestinationId,Type,PricePerPerson,OriginalPrice,FromDate,ToDate,Status,ImageFile,Id")] Offer offer)
         {
             if (id != offer.Id)
             {
@@ -137,6 +137,17 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 try
                 {
+                    //Save image to wwwroot/image
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(offer.ImageFile.FileName);
+                    string extension = Path.GetExtension(offer.ImageFile.FileName);
+                    offer.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/Images/OfferImages", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await offer.ImageFile.CopyToAsync(fileStream);
+                    }
+
                     _context.Update(offer);
                     await _context.SaveChangesAsync();
                 }
@@ -153,7 +164,7 @@ namespace WA_TravelAgency_v1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Country", offer.DestinationId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
             ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
             return View(offer);
         }

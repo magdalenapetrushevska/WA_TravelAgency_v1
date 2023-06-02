@@ -8,7 +8,7 @@ namespace WA_TravelAgency_v1.Models.DomainModels
     [Table("Offer")]
     public class Offer : BaseEntity
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public Guid? TransportId { get; set; }
         public Guid? DestinationId { get; set; }
         public OfferType Type { get; set; }

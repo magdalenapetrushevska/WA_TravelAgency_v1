@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using WA_TravelAgency_v1.Data;
 using WA_TravelAgency_v1.Models.DomainModels;
 
@@ -13,10 +14,12 @@ namespace WA_TravelAgency_v1.Controllers
     public class PromotionController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public PromotionController(ApplicationDbContext context)
+        public PromotionController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Promotion
@@ -62,6 +65,18 @@ namespace WA_TravelAgency_v1.Controllers
             if (ModelState.IsValid)
             {
                 promotion.Id = Guid.NewGuid();
+
+                //Save image to wwwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(promotion.ImageFile.FileName);
+                string extension = Path.GetExtension(promotion.ImageFile.FileName);
+                promotion.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Images/PromotionImages", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await promotion.ImageFile.CopyToAsync(fileStream);
+                }
+
                 _context.Add(promotion);
 
                 Offer chosenOffer = _context.Offers.Find(promotion.OfferId);
@@ -96,7 +111,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Title,OfferId,Discount,StartDateOfPromotion,EndDateOfPromotion,Id")] Promotion promotion)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Title,OfferId,Discount,StartDateOfPromotion,EndDateOfPromotion,ImageFile,Id")] Promotion promotion)
         {
             if (id != promotion.Id)
             {
@@ -107,6 +122,17 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 try
                 {
+                    //Save image to wwwroot/image
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(promotion.ImageFile.FileName);
+                    string extension = Path.GetExtension(promotion.ImageFile.FileName);
+                    promotion.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/Images/PromotionImages", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await promotion.ImageFile.CopyToAsync(fileStream);
+                    }
+
                     _context.Update(promotion);
                     await _context.SaveChangesAsync();
                 }
