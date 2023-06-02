@@ -16,6 +16,9 @@ using Stripe;
 using Stripe.TestHelpers;
 using Microsoft.AspNetCore.Identity;
 using WA_TravelAgency_v1.Models.Identity;
+using Newtonsoft.Json;
+using System.Text;
+using GemBox.Document;
 
 namespace WA_TravelAgency_v1.Controllers
 {
@@ -28,6 +31,7 @@ namespace WA_TravelAgency_v1.Controllers
         public ReservationController(ApplicationDbContext context)
         {
             _context = context;
+            ComponentInfo.SetLicense("FREE-LIMITED-KEY");
         }
 
         // GET: Reservation
@@ -258,6 +262,38 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 return RedirectToAction("Index", "Reservation");
             }
+        }
+
+        public FileContentResult CreateInvoice(Guid id)
+        {
+            var result = _context.Reservation.Find(id);
+
+            var templatePath = Path.Combine(Directory.GetCurrentDirectory(), "Invoice.docx");
+            var document = DocumentModel.Load(templatePath);
+
+            var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var loggedInUser = _context.Users.Find(loggedInUserId);
+
+
+            document.Content.Replace("{{ReservationNumber}}", result.Id.ToString());
+            document.Content.Replace("{{UserName}}", loggedInUser.Name);
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Offer id: " + result.OfferId + "\n");
+            sb.Append("Reservation date: " + result.ReservationDate + "\n");
+            sb.Append("Reservation status: " + result.Status + "\n");
+            sb.Append("Number of passengers: " + result.NumOfPassengers + "\n");
+            sb.Append("Number of gratis: " + result.NumOfGratis);
+
+            document.Content.Replace("{{ReservationDetails}}", sb.ToString());
+            document.Content.Replace("{{TotalPrice}}", result.AmountToPay.ToString() + "$");
+
+            var stream = new MemoryStream();
+
+            document.Save(stream, new PdfSaveOptions());
+
+            return File(stream.ToArray(), new PdfSaveOptions().ContentType, "ExportInvoice.pdf");
         }
     }
 }

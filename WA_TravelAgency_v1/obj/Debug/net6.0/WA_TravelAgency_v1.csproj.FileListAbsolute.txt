@@ -284,3 +284,15 @@ C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\MimeKit.dll
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\GemBox.Document.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\HarfBuzzSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\SkiaSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\osx\native\libHarfBuzzSharp.dylib
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-x64\native\libHarfBuzzSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-x86\native\libHarfBuzzSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll

@@ -66,6 +66,7 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <td><a class="btn btn-outline-secondary" asp-action="CreateInvoice" asp-route-id="@item.Id">Create Invoice</a></td>
                     @if (item.Paid.ToString() == "No")
                     {
                         <form asp-controller="Reservation" asp-action="PayOrder" asp-route-id="@item.Id" method="post">
