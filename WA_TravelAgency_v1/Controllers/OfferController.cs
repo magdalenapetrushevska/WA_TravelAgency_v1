@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using MimeKit;
 using Stripe;
 using WA_TravelAgency_v1.Data;
 using WA_TravelAgency_v1.Models.DomainModels;
@@ -238,40 +240,41 @@ namespace WA_TravelAgency_v1.Controllers
             return RedirectToAction("Index","Reservation");
         }
 
-        public async Task<IActionResult> SetVouchers(Guid id)
+        public async Task<IActionResult> SendMail()
         {
-            //Reservation newReservation = new Reservation();
+            var email = new MimeMessage();
+            var body = "Example message for test email. Check whather it will work for sending email reservation test for offer.";
+            email.From.Add(MailboxAddress.Parse("jeramie.satterfield@ethereal.email"));
+            email.To.Add(MailboxAddress.Parse("jeramie.satterfield@ethereal.email"));
 
-            //newReservation.Id = Guid.NewGuid();
-            //newReservation.OfferId = id;
+            email.Subject = "Send email in Asp.net core web app";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = body };
 
-            //var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //var loggedInUser = _context.Users.Find(loggedInUserId);
-            //newReservation.UserId = loggedInUserId;
-            //newReservation.Passenger = loggedInUser;
-            //newReservation.ReservationDate = DateTime.Now;
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.ethereal.email", 587, MailKit.Security.SecureSocketOptions.StartTls);
+            smtp.Authenticate("jeramie.satterfield@ethereal.email", "Es9gN3cavCfPddFHxe");
+            smtp.Send(email);
+            smtp.Disconnect(true);
 
-            //Offer chosenOffer = _context.Offers.Find(newReservation.OfferId);
-            //newReservation.AmountToPay = chosenOffer.PricePerPerson;
-            //newReservation.AmountPaid = Constants.initialPaidAmount;
-            //newReservation.Paid = NoYes.No;
-            //newReservation.Status = OfferStatus.Active;
+            return RedirectToAction("Index", "Home");
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SearchOffer(string id)
+        {
+            if (id!=null || id!="")
+            {
+                ViewBag.SearchWord = id;
+                List<Offer> list = new();
+                list = _context.Offers.Where(m => m.Name.Contains(id)).ToList();
 
-            //List<ApplicationUser> usersWhoReceivedVouchers = _context.Users.Where(m => m.User)
-
-
-            //    // TREBA DA SE NAJDAT SITE USERS KOI ZASLUZUVAAT VOUCHERS
-            //    //VOUCHERS DOBIVAAT ONIE STO IMAAT REZERVIRANO 3 PATI POSLEDOVATELNO
-            //    //
-
-
-            ////foreach(var item in )
-
-            //_context.Add(newReservation);
-            //await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index", "Voucher");
+                return View(list);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
     }
