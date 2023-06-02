@@ -277,5 +277,17 @@ namespace WA_TravelAgency_v1.Controllers
             }
         }
 
+        public async Task<IActionResult> SummerOffers()
+        {
+            var applicationDbContext = _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Where(m => m.Type == OfferType.Summer);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> WinterOffers()
+        {
+            var applicationDbContext = _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Where(m => m.Type == OfferType.Winter);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
     }
 }
