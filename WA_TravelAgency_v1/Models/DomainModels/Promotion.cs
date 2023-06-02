@@ -1,10 +1,11 @@
-﻿using Stripe;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace WA_TravelAgency_v1.Models.DomainModels
 {
-    public class OfferPromotion : BaseEntity
+    [Table("Promotion")]
+    public class Promotion : BaseEntity
     {
         public string Title { get; set; }
         public Guid? OfferId { get; set; }
