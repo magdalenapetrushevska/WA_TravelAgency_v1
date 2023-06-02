@@ -195,6 +195,9 @@ namespace WA_TravelAgency_v1.Data.Migrations
                     b.Property<int>("PricePerPerson")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("PromotionId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -241,6 +244,37 @@ namespace WA_TravelAgency_v1.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("OfferParameters");
+                });
+
+            modelBuilder.Entity("WA_TravelAgency_v1.Models.DomainModels.Promotion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDateOfPromotion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDateOfPromotion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId")
+                        .IsUnique()
+                        .HasFilter("[OfferId] IS NOT NULL");
+
+                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("WA_TravelAgency_v1.Models.DomainModels.Reservation", b =>
@@ -452,6 +486,15 @@ namespace WA_TravelAgency_v1.Data.Migrations
                     b.Navigation("Offer");
                 });
 
+            modelBuilder.Entity("WA_TravelAgency_v1.Models.DomainModels.Promotion", b =>
+                {
+                    b.HasOne("WA_TravelAgency_v1.Models.DomainModels.Offer", "Offer")
+                        .WithOne("Promotion")
+                        .HasForeignKey("WA_TravelAgency_v1.Models.DomainModels.Promotion", "OfferId");
+
+                    b.Navigation("Offer");
+                });
+
             modelBuilder.Entity("WA_TravelAgency_v1.Models.DomainModels.Reservation", b =>
                 {
                     b.HasOne("WA_TravelAgency_v1.Models.DomainModels.Offer", "Offer")
@@ -475,6 +518,8 @@ namespace WA_TravelAgency_v1.Data.Migrations
             modelBuilder.Entity("WA_TravelAgency_v1.Models.DomainModels.Offer", b =>
                 {
                     b.Navigation("OfferParameters");
+
+                    b.Navigation("Promotion");
 
                     b.Navigation("Reservations");
                 });

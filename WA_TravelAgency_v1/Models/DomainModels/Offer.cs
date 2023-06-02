@@ -25,5 +25,7 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public Destination? Destination { get; set; }
         public virtual OfferParameters? OfferParameters { get; set; }
         public ICollection<Reservation>? Reservations { get; set; }
+        public Guid? PromotionId { get; set; }
+        public virtual Promotion? Promotion { get; set; }
     }
 }
