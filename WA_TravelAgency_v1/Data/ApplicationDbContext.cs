@@ -19,7 +19,7 @@ namespace WA_TravelAgency_v1.Data
         public virtual DbSet<Transport> Transport { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<OfferParameters> OfferParameters { get; set; }
-        public virtual DbSet<Promotion> Promotions { get; set; }
+        public virtual DbSet<OfferPromotion> OfferPromotions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -52,9 +52,9 @@ namespace WA_TravelAgency_v1.Data
                 .HasForeignKey(z => z.UserId);
 
             builder.Entity<Offer>()
-                .HasOne(e => e.Promotion)
+                .HasOne(e => e.OfferPromotion)
                 .WithOne(e => e.Offer)
-                .HasForeignKey<Promotion>(e => e.OfferId);
+                .HasForeignKey<OfferPromotion>(e => e.OfferId);
 
         }
 

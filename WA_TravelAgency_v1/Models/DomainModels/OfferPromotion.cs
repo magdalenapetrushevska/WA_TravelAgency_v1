@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace WA_TravelAgency_v1.Models.DomainModels
 {
-    public class Promotion : BaseEntity
+    public class OfferPromotion : BaseEntity
     {
         public string Title { get; set; }
         public Guid? OfferId { get; set; }
