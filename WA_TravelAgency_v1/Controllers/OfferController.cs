@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using Stripe;
 using WA_TravelAgency_v1.Data;
 using WA_TravelAgency_v1.Models.DomainModels;
 using WA_TravelAgency_v1.Models.Enums;
@@ -18,10 +20,12 @@ namespace WA_TravelAgency_v1.Controllers
     public class OfferController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public OfferController(ApplicationDbContext context)
+        public OfferController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Offer
@@ -68,7 +72,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,TransportId,DestinationId,Type,PricePerPerson,FromDate,ToDate,Status,Id")] Offer offer)
+        public async Task<IActionResult> Create([Bind("Name,TransportId,DestinationId,Type,PricePerPerson,FromDate,ToDate,Status,ImageFile,Id")] Offer offer)
         {
             Destination chosenDestinaion = _context.Destinatons.Find(offer.DestinationId);
             offer.Destination = chosenDestinaion;
@@ -77,6 +81,19 @@ namespace WA_TravelAgency_v1.Controllers
             if (ModelState.IsValid)
             {
                 offer.Id = Guid.NewGuid();
+                offer.OriginalPrice = offer.PricePerPerson;
+
+                //Save image to wwwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(offer.ImageFile.FileName);
+                string extension = Path.GetExtension(offer.ImageFile.FileName);
+                offer.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Images/OfferImages", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await offer.ImageFile.CopyToAsync(fileStream);
+                }
+
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

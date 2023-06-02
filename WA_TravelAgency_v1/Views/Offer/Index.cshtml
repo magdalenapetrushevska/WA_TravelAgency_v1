@@ -39,6 +39,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Destination)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -67,15 +73,28 @@
                 @Html.DisplayFor(modelItem => item.Destination.Country)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.OriginalPrice)
+            </td>
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">  <img class="card-img-top" src="~/Images/OfferImages/@item.ImageName" alt="Image for product!" /> </a>
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
                     <a asp-action="MakeAReservation" asp-route-id="@item.Id" class="btn d-inline mr-2" style="background-color: #e05260;">
                          Reserve
                     </a>
-
+                    @if (item.OriginalPrice != item.PricePerPerson)
+                    {
+                        <br />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="violet" class="bi bi-bucket-fill" viewBox="0 0 16 16">
+                            <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527z" />
+                        </svg>
+                        <p><b>Active promotion</b></p>
+                    }
             </td>
-
+            
         </tr>
 }
     </tbody>

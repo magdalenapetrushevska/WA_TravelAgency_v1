@@ -15,5 +15,10 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public DateTime StartDateOfPromotion { get; set; }
         [Display(Name = "End date of promotion")]
         public DateTime EndDateOfPromotion { get; set; }
+        public string? ImageName { get; set; }
+
+        [Display(Name = "Image")]
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
     }
 }

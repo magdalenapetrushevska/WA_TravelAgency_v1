@@ -14,6 +14,8 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public OfferType Type { get; set; }
         [Display(Name = "Price per person")]
         public int PricePerPerson { get; set; }
+        [Display(Name = "Original price")]
+        public int OriginalPrice { get; set; }
         [Display(Name = "From date")]
         public DateTime FromDate { get; set; }
         [Display(Name = "To date")]
@@ -27,5 +29,10 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public ICollection<Reservation>? Reservations { get; set; }
         public Guid? PromotionId { get; set; }
         public virtual Promotion? Promotion { get; set; }
+        public string? ImageName { get; set; }
+
+        [Display(Name = "Image")]
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
     }
 }
