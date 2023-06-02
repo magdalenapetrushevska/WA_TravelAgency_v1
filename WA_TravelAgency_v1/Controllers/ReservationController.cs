@@ -19,6 +19,7 @@ using WA_TravelAgency_v1.Models.Identity;
 using Newtonsoft.Json;
 using System.Text;
 using GemBox.Document;
+using ClosedXML.Excel;
 
 namespace WA_TravelAgency_v1.Controllers
 {
@@ -295,5 +296,56 @@ namespace WA_TravelAgency_v1.Controllers
 
             return File(stream.ToArray(), new PdfSaveOptions().ContentType, "ExportInvoice.pdf");
         }
+
+
+        [HttpGet]
+        public FileContentResult ExportAllReservations()
+        {
+            string fileName = "Reservations.xlsx";
+            string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+            using (var workbook = new XLWorkbook())
+            {
+                IXLWorksheet worksheet = workbook.Worksheets.Add("All reservations");
+
+                worksheet.Cell(1, 1).Value = "Reservation Id";
+                worksheet.Cell(1, 2).Value = "Customer Email";
+                worksheet.Cell(1, 3).Value = "Offer";
+                worksheet.Cell(1, 4).Value = "Amount to pay";
+                worksheet.Cell(1, 5).Value = "Paid";
+                worksheet.Cell(1, 6).Value = "Amount paid";
+                worksheet.Cell(1, 7).Value = "Status";
+                worksheet.Cell(1, 8).Value = "Number of passengers";
+
+                List<Reservation> reservations = new List<Reservation>();
+                reservations = _context.Reservation.Include(r => r.Offer).Include(r => r.Passenger).ToList();
+
+
+                for (int i = 1; i <= reservations.Count; i++)
+                {
+                    var item = reservations[i - 1];
+
+                    worksheet.Cell(i + 1, 1).Value = item.Id.ToString();
+                    worksheet.Cell(i + 1, 2).Value = item.Passenger != null ? item.Passenger.Email.ToString() : "";
+                    worksheet.Cell(i + 1, 3).Value = item.Offer != null ? item.Offer.Name.ToString() : "";
+                    worksheet.Cell(i + 1, 4).Value = item.AmountToPay.ToString();
+                    worksheet.Cell(i + 1, 5).Value = item.Paid.ToString();
+                    worksheet.Cell(i + 1, 6).Value = item.AmountPaid.ToString();
+                    worksheet.Cell(i + 1, 7).Value = item.Status.ToString();
+                    worksheet.Cell(i + 1, 8).Value = item.NumOfPassengers.ToString();
+
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    return File(content, contentType, fileName);
+                }
+
+            }
+        }
+
     }
 }
