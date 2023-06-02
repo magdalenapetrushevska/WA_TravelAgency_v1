@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\Images\\OfferImages\\travelOffer1234638921.png"
     },
     {
+      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\promotion1235600504.png",
+      "PackagePath": "staticwebassets\\Images\\PromotionImages\\promotion1235600504.png"
+    },
+    {
       "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\airplane.jpg",
       "PackagePath": "staticwebassets\\Images\\airplane.jpg"
     },

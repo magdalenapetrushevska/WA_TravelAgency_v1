@@ -25,7 +25,6 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         public NoYes SureRealization { get; set; }
         public Transport? Transport { get; set; }
         public Destination? Destination { get; set; }
-        public virtual OfferParameters? OfferParameters { get; set; }
         public ICollection<Reservation>? Reservations { get; set; }
         public Guid? PromotionId { get; set; }
         public virtual Promotion? Promotion { get; set; }
@@ -34,5 +33,7 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         [Display(Name = "Image")]
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
+        [Display(Name = "Мinimum number of passengers for gratis")]
+        public int МinNumOfPassForGratis { get; set; }
     }
 }

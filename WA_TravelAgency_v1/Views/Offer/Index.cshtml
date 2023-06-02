@@ -45,6 +45,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImageFile)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.МinNumOfPassForGratis)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -74,6 +77,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OriginalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.МinNumOfPassForGratis)
             </td>
             <td>
                     <a asp-action="Details" asp-route-id="@item.Id">  <img class="card-img-top" src="~/Images/OfferImages/@item.ImageName" alt="Image for product!" /> </a>

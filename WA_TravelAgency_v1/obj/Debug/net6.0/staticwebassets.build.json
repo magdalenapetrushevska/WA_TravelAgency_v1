@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yffz7HbRZwuKDYR5ccdHV+xN+Om+t9gj7+osvAdI+yo=",
+  "Hash": "1g2amnNcpIEXJGMtaYSPxvkTy6h/yv4+cYXZ47qwcC8=",
   "Source": "WA_TravelAgency_v1",
   "BasePath": "_content/WA_TravelAgency_v1",
   "Mode": "Default",
@@ -1307,6 +1307,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\OfferImages\\travelOffer1234638921.png"
+    },
+    {
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\promotion1235600504.png",
+      "SourceId": "WA_TravelAgency_v1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
+      "BasePath": "_content/WA_TravelAgency_v1",
+      "RelativePath": "Images/PromotionImages/promotion1235600504.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\PromotionImages\\promotion1235600504.png"
     },
     {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\travel.jpg",

@@ -79,9 +79,9 @@ namespace WA_TravelAgency_v1.Controllers
                 reservation.Passenger = loggedInUser;
 
                 Offer chosenOffer = _context.Offers.Find(reservation.OfferId);
-                if(chosenOffer.OfferParameters.МinNumOfPassForGratis <= reservation.NumOfPassengers)
+                if(chosenOffer.МinNumOfPassForGratis <= reservation.NumOfPassengers)
                 {
-                    var numOfGratis = reservation.NumOfPassengers % chosenOffer.OfferParameters.МinNumOfPassForGratis;
+                    var numOfGratis = reservation.NumOfPassengers % chosenOffer.МinNumOfPassForGratis;
                     reservation.AmountPaid = chosenOffer.PricePerPerson * (reservation.NumOfPassengers - numOfGratis);
                 }
                 else

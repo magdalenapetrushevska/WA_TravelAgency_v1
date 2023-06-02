@@ -47,7 +47,6 @@ namespace WA_TravelAgency_v1.Controllers
                 .Include(o => o.Destination)
                 .Include(o => o.Transport)
                 .Include(o => o.Reservations)
-                .Include(o => o.OfferParameters)
                 .Include(o => o.Transport)
                 .Include(o => o.Destination)
                 .FirstOrDefaultAsync(m => m.Id == id);
