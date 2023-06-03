@@ -232,10 +232,23 @@ namespace WA_TravelAgency_v1.Controllers
             newReservation.NumOfPassengers = resevation.NumOfPassengers;
 
             Offer chosenOffer = _context.Offers.Find(newReservation.OfferId);
-            newReservation.AmountToPay = chosenOffer.PricePerPerson;
+
+            if (chosenOffer.МinNumOfPassForGratis <= newReservation.NumOfPassengers)
+            {
+                var numOfGratis = newReservation.NumOfPassengers % chosenOffer.МinNumOfPassForGratis;
+                newReservation.AmountToPay = chosenOffer.PricePerPerson * (newReservation.NumOfPassengers - numOfGratis);
+                newReservation.NumOfGratis = numOfGratis;
+            }
+            else
+            {
+                newReservation.AmountToPay = chosenOffer.PricePerPerson * newReservation.NumOfPassengers;
+                newReservation.NumOfGratis = 0;
+            }
             newReservation.AmountPaid = Constants.initialPaidAmount;
             newReservation.Paid = NoYes.No;
             newReservation.Status = OfferStatus.Active;
+
+
 
             _context.Add(newReservation);
             await _context.SaveChangesAsync();

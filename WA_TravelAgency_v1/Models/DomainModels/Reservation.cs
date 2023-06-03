@@ -24,6 +24,10 @@ namespace WA_TravelAgency_v1.Models.DomainModels
         [Display(Name = "Number of gratis")]
         public int NumOfGratis { get; set; }
 
+        [Display(Name = "Reserved by")]
+        public string? ReservedBy { get; set; }
+
+
     }
 
 
