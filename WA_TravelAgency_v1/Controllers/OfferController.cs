@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +34,10 @@ namespace WA_TravelAgency_v1.Controllers
         // GET: Offer
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Offers.Include(o => o.Destination).Include(o => o.Transport);
-            return View(await applicationDbContext.ToListAsync());
+            List<Offer> offers = new List<Offer>();
+            offers = await _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Include(o => o.Promotion).ToListAsync();
+
+            return View(offers);
         }
 
         // GET: Offer/Details/5
