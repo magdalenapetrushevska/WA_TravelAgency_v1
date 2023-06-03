@@ -28,10 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Paid" class="control-label"></label>
-                <select asp-for="Paid" class="form-control">
-                    <option>No</option>
-                    <option>Yes</option>
-                </select>
+                <select asp-for="Paid" class="form-control"></select>
                 <span asp-validation-for="Paid" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -41,12 +38,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <select asp-for="Status" class="form-control">
-                    <option>Created</option>
-                    <option>Active</option>
-                    <option>Canceled</option>
-                </select>
+                <select asp-for="Status" class="form-control"></select>
                 <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfPassengers" class="control-label"></label>
+                <input asp-for="NumOfPassengers" class="form-control" />
+                <span asp-validation-for="NumOfPassengers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfGratis" class="control-label"></label>
+                <input asp-for="NumOfGratis" class="form-control" />
+                <span asp-validation-for="NumOfGratis" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
