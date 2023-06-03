@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.101.0" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
     <PackageReference Include="GemBox.Document" Version="35.0.1363" />
     <PackageReference Include="MailKit" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.16" />
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="files\" />
     <Folder Include="wwwroot\Images\PromotionImages\" />
     <Folder Include="wwwroot\Images\OfferImages\" />
   </ItemGroup>

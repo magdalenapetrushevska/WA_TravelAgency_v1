@@ -20,6 +20,9 @@ using Newtonsoft.Json;
 using System.Text;
 using GemBox.Document;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using ExcelDataReader;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace WA_TravelAgency_v1.Controllers
 {
@@ -347,5 +350,55 @@ namespace WA_TravelAgency_v1.Controllers
             }
         }
 
-    }
+        public IActionResult ImportReservations(IFormFile file)
+        {
+
+            //make a copy
+            string pathToUpload = $"{Directory.GetCurrentDirectory()}\\files\\{file.FileName}";
+
+            using (FileStream fileStream = System.IO.File.Create(pathToUpload))
+            {
+                file.CopyTo(fileStream);
+
+                fileStream.Flush();
+            }
+
+            this.getAllReservationsFromFileAsync(file.FileName);
+
+            return RedirectToAction("Index", "Reservation");
+        }
+
+        private async Task getAllReservationsFromFileAsync(string fileName)
+        {
+            string filePath = $"{Directory.GetCurrentDirectory()}\\files\\{fileName}";
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+
+            using (var stream = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    while (reader.Read())
+                    {
+                        Reservation newReservation = new Reservation();
+                        newReservation.Id = Guid.NewGuid();
+                        newReservation.OfferId = new Guid(reader.GetValue(0).ToString());
+                        newReservation.AmountToPay = Convert.ToInt32(reader.GetValue(1));
+                        newReservation.ReservationDate = (DateTime)reader.GetValue(2);
+                        newReservation.Paid = Enum.Parse<NoYes>(reader.GetValue(3).ToString());
+                        newReservation.AmountPaid = Convert.ToInt32(reader.GetValue(4));
+                        newReservation.Status = Enum.Parse<OfferStatus>(reader.GetValue(5).ToString());
+                        newReservation.UserId = (string)reader.GetValue(6);
+                        newReservation.NumOfPassengers = Convert.ToInt32(reader.GetValue(7));
+                        newReservation.NumOfGratis = Convert.ToInt32(reader.GetValue(8));
+
+                        _context.Add(newReservation);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
+}
 }

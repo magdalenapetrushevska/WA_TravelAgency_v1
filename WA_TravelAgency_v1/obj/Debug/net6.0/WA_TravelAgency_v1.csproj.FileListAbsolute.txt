@@ -303,3 +303,4 @@ C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\SixLabors.Fonts.dll
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\System.IO.Packaging.dll
 C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\XLParser.dll
+C:\Users\magda\source\repos\WA_TravelAgency_v1\WA_TravelAgency_v1\bin\Debug\net6.0\ExcelDataReader.dll

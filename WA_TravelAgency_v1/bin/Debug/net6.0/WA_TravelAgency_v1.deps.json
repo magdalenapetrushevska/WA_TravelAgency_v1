@@ -9,6 +9,7 @@
       "WA_TravelAgency_v1/1.0.0": {
         "dependencies": {
           "ClosedXML": "0.101.0",
+          "ExcelDataReader": "3.6.0",
           "GemBox.Document": "35.0.1363",
           "MailKit": "4.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.16",
@@ -54,6 +55,14 @@
           "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
             "assemblyVersion": "2.16.0.0",
             "fileVersion": "2.16.0.0"
+          }
+        }
+      },
+      "ExcelDataReader/3.6.0": {
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.0"
           }
         }
       },
@@ -2625,6 +2634,13 @@
       "sha512": "sha512-RhpnDgyyx1KjZm98T3w3bSXFHG/7ZNUaVmz4NAUA+jmV3PcVNZeW87Y04CpBNLdDHEMSspirfo0B5kLRaoE97w==",
       "path": "documentformat.openxml/2.16.0",
       "hashPath": "documentformat.openxml.2.16.0.nupkg.sha512"
+    },
+    "ExcelDataReader/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eXyxTwG7EEWpgQX3juZ2KcndqTqm/ydx9GXS2lUiMJU54U4h5eXdygRtVgINv0t60ezPWEb+lL7uM7Q+wm5BBA==",
+      "path": "exceldatareader/3.6.0",
+      "hashPath": "exceldatareader.3.6.0.nupkg.sha512"
     },
     "ExcelNumberFormat/1.1.0": {
       "type": "package",

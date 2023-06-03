@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[0.101.0, )"
             },
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
             "GemBox.Document": {
               "target": "Package",
               "version": "[35.0.1363, )"

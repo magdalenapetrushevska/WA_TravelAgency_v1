@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "PS+U22C2fAi62m7gIWiTl9GjV69qCOQdEbCvjtEPv3Iw+iqRxJ0YQDrYsD1ytOBa3+CLelaipoGLO2Z4vab/MQ==",
+  "dgSpecHash": "exx8ilyCApUkMhEFQfCmOP6sTNLISiaq2iG4LJBgOMTMtVIQ+/yeT1aFrsZ6FeZbCf7mrLLEegM+OhMdEvwZtw==",
   "success": true,
   "projectFilePath": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\WA_TravelAgency_v1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\magda\\.nuget\\packages\\bouncycastle.cryptography\\2.1.1\\bouncycastle.cryptography.2.1.1.nupkg.sha512",
     "C:\\Users\\magda\\.nuget\\packages\\closedxml\\0.101.0\\closedxml.0.101.0.nupkg.sha512",
     "C:\\Users\\magda\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
+    "C:\\Users\\magda\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\magda\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\magda\\.nuget\\packages\\gembox.document\\35.0.1363\\gembox.document.35.0.1363.nupkg.sha512",
     "C:\\Users\\magda\\.nuget\\packages\\harfbuzzsharp\\2.8.2\\harfbuzzsharp.2.8.2.nupkg.sha512",
