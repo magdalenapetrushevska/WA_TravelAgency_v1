@@ -215,7 +215,9 @@ namespace WA_TravelAgency_v1.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> MakeAReservation(Guid id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MakeAReservation(Guid id, [Bind("NumOfPassengers")] Reservation resevation)
         {
             Reservation newReservation = new Reservation();
 
@@ -227,6 +229,7 @@ namespace WA_TravelAgency_v1.Controllers
             newReservation.UserId = loggedInUserId;
             newReservation.Passenger = loggedInUser;
             newReservation.ReservationDate = DateTime.Now;
+            newReservation.NumOfPassengers = resevation.NumOfPassengers;
 
             Offer chosenOffer = _context.Offers.Find(newReservation.OfferId);
             newReservation.AmountToPay = chosenOffer.PricePerPerson;

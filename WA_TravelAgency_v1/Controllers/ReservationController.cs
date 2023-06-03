@@ -400,5 +400,12 @@ namespace WA_TravelAgency_v1.Controllers
             }
         }
 
-}
+
+        // CreateMyReservation
+        public IActionResult CreateMyReservation(Guid? id)
+        {
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", id);
+            return View();
+        }
+    }
 }
