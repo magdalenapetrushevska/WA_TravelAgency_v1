@@ -13,22 +13,22 @@
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="TransportId" class="control-label"></label>
                 <select asp-for="TransportId" class="form-control" asp-items="ViewBag.TransportId"></select>
                 <span asp-validation-for="TransportId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="DestinationId" class="control-label"></label>
                 <select asp-for="DestinationId" class="form-control" asp-items="ViewBag.DestinationId"></select>
                 <span asp-validation-for="DestinationId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Type" class="control-label"></label>
                 <select asp-for="Type" class="form-control">
                     <option>Winter</option>
@@ -36,27 +36,27 @@
                 </select>
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="PricePerPerson" class="control-label"></label>
                 <input asp-for="PricePerPerson" class="form-control" />
                 <span asp-validation-for="PricePerPerson" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="OriginalPrice" class="control-label"></label>
                 <input asp-for="OriginalPrice" class="form-control" />
                 <span asp-validation-for="OriginalPrice" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="FromDate" class="control-label"></label>
                 <input asp-for="FromDate" class="form-control" />
                 <span asp-validation-for="FromDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="ToDate" class="control-label"></label>
                 <input asp-for="ToDate" class="form-control" />
                 <span asp-validation-for="ToDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control">
                     <option>Created</option>
@@ -65,18 +65,18 @@
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="ImageFile" class="control-label"></label>
                 <input asp-for="ImageFile" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="МinNumOfPassForGratis" class="control-label"></label>
                 <input asp-for="МinNumOfPassForGratis" class="form-control" />
                 <span asp-validation-for="МinNumOfPassForGratis" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
