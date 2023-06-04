@@ -1,0 +1,146 @@
+﻿body {
+}
+
+.stretch-card {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    /*background-color: blue;*/
+}
+
+
+.card.card-tale {
+    background: #7DA0FA;
+    color: #ffffff;
+}
+
+.stretch-card > .card {
+    width: 100%;
+    min-width: 100%;
+}
+
+.card {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    transition: background 0.25s ease;
+    -webkit-transition: background 0.25s ease;
+    -moz-transition: background 0.25s ease;
+    -ms-transition: background 0.25s ease;
+    border: none;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+}
+
+.card.card-tale {
+    background: #7DA0FA;
+    color: #ffffff;
+}
+
+div {
+    display: block;
+}
+
+.fs-30 {
+    font-size: 30px;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+p {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3rem;
+}
+
+a, div, h1, h2, h3, h4, h5, p, span {
+    text-shadow: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3rem;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.card.card-dark-blue {
+    background: #4747A1;
+    color: #ffffff;
+}
+
+.card.card-light-blue {
+    background: #7978E9;
+    color: #ffffff;
+}
+
+.card.card-light-danger {
+    background: #F3797E;
+    color: #ffffff;
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.grid-margin {
+    margin-bottom: 2.5rem;
+}
+
+.card.tale-bg {
+    background: #DAE7FF;
+}
+
+.card-people {
+    position: relative;
+    padding-top: 20px;
+}
+
+    .card-people img {
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .card-people .weather-info {
+        position: absolute;
+        top: 30px;
+        right: 24px;
+    }
+
+
+
+.font-weight-normal {
+    font-weight: 400 !important;
+}

@@ -59,7 +59,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Vehicle,Company,Capacity,Id")] Transport transport)
+        public async Task<IActionResult> Create([Bind("Name,Vehicle,Company,Capacity,Id")] Transport transport)
         {
             if (ModelState.IsValid)
             {

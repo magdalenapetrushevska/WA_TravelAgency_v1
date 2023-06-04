@@ -5,7 +5,7 @@
 }
 
 <h1>Destinations</h1>
-
+@*
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -45,3 +45,62 @@
 }
     </tbody>
 </table>
+*@
+
+
+<div class="mb-5 mt-3">
+
+    <a asp-action="Create" class="btn btn-success ml-5 btn-lg" style="background-color:#9cc69b; color:black">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>   Create new
+    </a>
+</div>
+
+
+<div class="accordion" id="accordionExample">
+    @foreach (var item in Model)
+    {
+        var ItemIdVal = item.Id.ToString();
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#X@(ItemIdVal)" aria-expanded="false">
+                    @item.Name
+                </button>
+            </h2>
+            <div id="X@(ItemIdVal)" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.City)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Accommodation)
+                                </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Accommodation)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

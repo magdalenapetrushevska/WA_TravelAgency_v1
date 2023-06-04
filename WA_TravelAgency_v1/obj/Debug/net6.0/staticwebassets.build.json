@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1g2amnNcpIEXJGMtaYSPxvkTy6h/yv4+cYXZ47qwcC8=",
+  "Hash": "Gpn+4pV1U2x//fN8E59rjM+3Xp0J+2ay5fBGj0W0uGI=",
   "Source": "WA_TravelAgency_v1",
   "BasePath": "_content/WA_TravelAgency_v1",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WA_TravelAgency_v1.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\css\\offers.css",
+      "SourceId": "WA_TravelAgency_v1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
+      "BasePath": "_content/WA_TravelAgency_v1",
+      "RelativePath": "css/offers.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\offers.css"
+    },
+    {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\css\\site.css",
       "SourceId": "WA_TravelAgency_v1",
       "SourceType": "Discovered",
@@ -1307,6 +1324,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\OfferImages\\travelOffer1234638921.png"
+    },
+    {
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\OfferImages\\winter232011829.png",
+      "SourceId": "WA_TravelAgency_v1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
+      "BasePath": "_content/WA_TravelAgency_v1",
+      "RelativePath": "Images/OfferImages/winter232011829.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\OfferImages\\winter232011829.png"
+    },
+    {
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\people.png",
+      "SourceId": "WA_TravelAgency_v1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
+      "BasePath": "_content/WA_TravelAgency_v1",
+      "RelativePath": "Images/people.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\people.png"
     },
     {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\promotion1235600504.png",

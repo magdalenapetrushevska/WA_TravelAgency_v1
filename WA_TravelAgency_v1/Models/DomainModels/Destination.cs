@@ -6,6 +6,7 @@ namespace WA_TravelAgency_v1.Models.DomainModels
     [Table("Destination")]
     public class Destination : BaseEntity
     {
+        public string? Name { get; set; }
         [Required]
         public string Country { get; set; }
         public string? City { get; set; }

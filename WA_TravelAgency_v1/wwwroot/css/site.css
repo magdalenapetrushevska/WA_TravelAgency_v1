@@ -14,5 +14,12 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    font-weight: initial;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    color: #1F1F1F;
 }
+

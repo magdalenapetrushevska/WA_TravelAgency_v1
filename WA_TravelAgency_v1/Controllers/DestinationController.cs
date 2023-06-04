@@ -58,7 +58,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Country,City,Accommodation,Id")] Destination destination)
+        public async Task<IActionResult> Create([Bind("Name,Country,City,Accommodation,Id")] Destination destination)
         {
             if (ModelState.IsValid)
             {
