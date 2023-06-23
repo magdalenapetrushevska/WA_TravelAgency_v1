@@ -6,10 +6,16 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<div class="mb-5 mt-3">
+
+    <a asp-action="Create" class="btn btn-success ml-5 btn-lg" style="background-color:#9cc69b; color:black">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>   Create new
+    </a>
+</div>
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -62,4 +68,209 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+
+
+@*@foreach (var item in Model) {
+    if (item.Offer.Type == WA_TravelAgency_v1.Models.Enums.OfferType.Summer){
+
+<div class="container-fluid">
+    <section>
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
+                <h5 class="text-uppercase">Summer promotions</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card promoCardBackrogund">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
+                                </div>
+                                <div>
+                                    <h4>Total Posts</h4>
+                                    <p class="mb-0">Monthly blog posts</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <h2 class="h1 mb-0">18,000</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+}
+}
+*@
+
+
+@*<div class="accordion" id="accordionExample">
+    @foreach (var item in Model)
+    {
+        var ItemIdVal = item.Id.ToString();
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#X@(ItemIdVal)" aria-expanded="false">
+                    @item.Name
+                </button>
+            </h2>
+            <div id="X@(ItemIdVal)" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.City)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Accommodation)
+                                </th>
+                                <th>
+
+                                </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Accommodation)
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Edit</a></li>
+                                            <li><a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+*@
+
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item ">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Summer promotions
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                @foreach (var item in Model)
+                {
+                    if (item.Offer.Type == WA_TravelAgency_v1.Models.Enums.OfferType.Summer)
+                    {
+
+                        <div class="container-fluid">
+                            <section>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-12 mb-4">
+                                        <div class="card promoCardBackrogund">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between p-md-1">
+                                                    <div class="d-flex flex-row">
+                                                        <div class="align-self-center">
+                                                            <img class="card-img-top" src="~/Images/PromotionImages/@item.ImageName" alt="Image for product!" width="100px" height="100px"/>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4>Total Posts</h4>
+                                                            <p class="mb-0">Monthly blog posts</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <h2 class="h1 mb-0">18,000</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </section>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item promoCardBackrogundWinter">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed promoCardBackrogundWinter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Winter promotions
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+ 
+</div>
+
+
+
+
+
+
+
+<div class="container py-5" style="border-color:red">
+    <div class="row justify-content-center" style="border-color:red">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+                <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+                <img src="~/Images/OfferImages/travelOffer1231212193.png"
+                     class="card-img-top" alt="Apple Computer" />
+                <div class="card-body">
+                    <div class="text-center">
+                        <h5 class="card-title">Believing is seeing</h5>
+                        @*<p class="text-muted mb-4">Apple pro display XDR</p>*@
+                        <a asp-action="CreateMyReservation" asp-controller="Reservation" asp-route-id="9" class="btn btn-primary mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
+                            </svg> Reserve
+                        </a>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <span>Destination</span><span>New York</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>From date</span><span>24/06/2023</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>To date</span><span>29/06/2023</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                        <span>Price</span><span>$7,197.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

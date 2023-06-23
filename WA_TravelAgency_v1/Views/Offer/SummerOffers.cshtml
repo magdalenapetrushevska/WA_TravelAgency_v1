@@ -1,107 +1,104 @@
-﻿@model IEnumerable<WA_TravelAgency_v1.Models.DomainModels.Offer>
+﻿@model IList<WA_TravelAgency_v1.Models.DomainModels.Offer>
 
 @{
     ViewData["Title"] = "SummerOffers";
 }
 
-<h1>SummerOffers</h1>
+<h1>Summer offers</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PricePerPerson)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OriginalPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FromDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SureRealization)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Transport)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Destination)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PromotionId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.МinNumOfPassForGratis)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PricePerPerson)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OriginalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FromDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SureRealization)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Transport.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destination.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PromotionId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.МinNumOfPassForGratis)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row">
+    <div class="col-3">
+        <div class="mt-2">
+            <a asp-action="Create" class="btn btn-success ml-5" style="background-color:#9cc69b; color:black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>   Create new offer
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+
+    <div class="col-3">
+        <form asp-action="SearchOffer" enctype="multipart/form-data" method="post">
+            <div class="input-group mb-5">
+                <input type="text" placeholder="Search..." class="form-control" name="id" style="border-color:#A8A8A8;">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <div class="container mt-2">
+
+
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            var item = Model[i];
+
+            if (i % 3 == 0)
+            {
+                @:<div class="row mb-5">
+                }
+
+
+                <div class="col-4">
+
+                    <div class="card" style="width: 20rem; height: auto;">
+                        
+                        <a asp-action="Details" asp-route-id="@item.Id">  <img class="card-img-top" src="~/Images/OfferImages/@item.ImageName" alt="Image for offer!" /> </a>
+
+                        <div class="card-body mt-2 mb-0">
+
+                            <h3 class="card-title d-inline mr-5 ml-4">@item.Name</h3>
+
+                            <a asp-action="CreateMyReservation" asp-controller = "Reservation" asp-route-id="@item.Id" class="btn btn-primary" style="background-color:#01baef">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
+                                    <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
+                                </svg> Reserve
+                            </a>
+                            <div class="ml-4 mt-2">
+                                @{
+                                    if (item.OriginalPrice != item.PricePerPerson)
+                                    {
+                                        <h6 style="color: darkblue;">Price: $ @item.PricePerPerson</h6>
+                                    }
+                                    else
+                                    {
+                                       <del> <h6 style="color:red">Original Price: $ @item.OriginalPrice</h6> </del>
+                                        <h6 style="color:darkblue">Promotion Price: $ @item.PricePerPerson</h6>
+                                    }
+                                }
+
+                                
+                            </div>
+
+                            
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+
+
+                if (i % 3 == 2)
+                {
+                @:</div>
+            }
+        }
+
+    </div>

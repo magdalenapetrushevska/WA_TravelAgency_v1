@@ -144,3 +144,86 @@ p {
 .font-weight-normal {
     font-weight: 400 !important;
 }
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.badge {
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0.375rem 0.5625rem;
+    font-weight: normal;
+}
+
+.badge-success, .preview-list .preview-item .preview-thumbnail .badge.badge-online {
+    color: #fff;
+    background-color: #57B657;
+}
+
+.table, .jsgrid .jsgrid-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.badge-warning, .preview-list .preview-item .preview-thumbnail .badge.badge-busy {
+    color: #212529;
+    background-color: #FFC100;
+}
+
+.badge-danger {
+    color: #fff;
+    background-color: #FF4747;
+}
+
+
+.cardtable {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card .card-body {
+    padding: 1.25rem 1.25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+
+.wrap-table100 {
+    width: 1170px;
+}
+
+.table100.ver1 {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -moz-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -o-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -ms-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+}
+
+.table100 {
+    position: relative;
+    padding-top: 60px;
+}
+
+.table100 {
+    background-color: #fff;
+}
+
+.promoCardBackrogund {
+    background-color: #EBF4A9;
+}
+
+.promoCardBackrogundWinter {
+    background-color: #8EB7F9;
+}

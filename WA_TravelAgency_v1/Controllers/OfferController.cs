@@ -236,7 +236,7 @@ namespace WA_TravelAgency_v1.Controllers
 
             Offer chosenOffer = _context.Offers.Find(newReservation.OfferId);
 
-            if (chosenOffer.МinNumOfPassForGratis <= newReservation.NumOfPassengers)
+            if (chosenOffer.МinNumOfPassForGratis != 0 && chosenOffer.МinNumOfPassForGratis <= newReservation.NumOfPassengers)
             {
                 var numOfGratis = newReservation.NumOfPassengers % chosenOffer.МinNumOfPassForGratis;
                 newReservation.AmountToPay = chosenOffer.PricePerPerson * (newReservation.NumOfPassengers - numOfGratis);
@@ -280,15 +280,16 @@ namespace WA_TravelAgency_v1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SearchOffer(string id)
+        public async Task<IActionResult> SearchOffer(string id)
         {
             if (id!=null || id!="")
             {
                 ViewBag.SearchWord = id;
-                List<Offer> list = new();
-                list = _context.Offers.Where(m => m.Name.Contains(id)).ToList();
 
-                return View(list);
+                List<Offer> offers = new List<Offer>();
+                offers = await _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Include(o => o.Promotion).Where(m => m.Name.Contains(id)).ToListAsync();
+
+                return View(offers);
             }
             else
             {
@@ -298,14 +299,19 @@ namespace WA_TravelAgency_v1.Controllers
 
         public async Task<IActionResult> SummerOffers()
         {
-            var applicationDbContext = _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Where(m => m.Type == OfferType.Summer);
-            return View(await applicationDbContext.ToListAsync());
+            List<Offer> offers = new List<Offer>();
+            offers = await _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Include(o => o.Promotion).Where(m => m.Type == OfferType.Summer).ToListAsync();
+
+            return View(offers);
         }
+
 
         public async Task<IActionResult> WinterOffers()
         {
-            var applicationDbContext = _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Where(m => m.Type == OfferType.Winter);
-            return View(await applicationDbContext.ToListAsync());
+            List<Offer> offers = new List<Offer>();
+            offers = await _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Include(o => o.Promotion).Where(m => m.Type == OfferType.Winter).ToListAsync();
+
+            return View(offers);
         }
 
     }

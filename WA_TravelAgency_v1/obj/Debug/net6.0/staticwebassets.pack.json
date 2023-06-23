@@ -41,32 +41,16 @@
       "PackagePath": "staticwebassets\\Images\\OfferImages\\winter232011829.png"
     },
     {
+      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\download233125444.png",
+      "PackagePath": "staticwebassets\\Images\\PromotionImages\\download233125444.png"
+    },
+    {
       "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\promotion1235600504.png",
       "PackagePath": "staticwebassets\\Images\\PromotionImages\\promotion1235600504.png"
     },
     {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\airplane.jpg",
-      "PackagePath": "staticwebassets\\Images\\airplane.jpg"
-    },
-    {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\airplane2.jpg",
-      "PackagePath": "staticwebassets\\Images\\airplane2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\back1.png",
-      "PackagePath": "staticwebassets\\Images\\back1.png"
-    },
-    {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\backgroundPh.jpg",
-      "PackagePath": "staticwebassets\\Images\\backgroundPh.jpg"
-    },
-    {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\people.png",
-      "PackagePath": "staticwebassets\\Images\\people.png"
-    },
-    {
-      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\travel.jpg",
-      "PackagePath": "staticwebassets\\Images\\travel.jpg"
+      "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\dogtravelfrontpage.png",
+      "PackagePath": "staticwebassets\\Images\\dogtravelfrontpage.png"
     },
     {
       "Id": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\css\\offers.css",

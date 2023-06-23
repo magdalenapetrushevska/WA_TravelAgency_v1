@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Gpn+4pV1U2x//fN8E59rjM+3Xp0J+2ay5fBGj0W0uGI=",
+  "Hash": "ouHRfE7TDA1MZwOvJJv5FjBJKxaRS11ZmXWppIpQ0cA=",
   "Source": "WA_TravelAgency_v1",
   "BasePath": "_content/WA_TravelAgency_v1",
   "Mode": "Default",
@@ -1122,12 +1122,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\airplane.jpg",
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\dogtravelfrontpage.png",
       "SourceId": "WA_TravelAgency_v1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
       "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/airplane.jpg",
+      "RelativePath": "Images/dogtravelfrontpage.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1136,58 +1136,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\airplane.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\airplane2.jpg",
-      "SourceId": "WA_TravelAgency_v1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
-      "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/airplane2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\airplane2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\back1.png",
-      "SourceId": "WA_TravelAgency_v1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
-      "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/back1.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\back1.png"
-    },
-    {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\backgroundPh.jpg",
-      "SourceId": "WA_TravelAgency_v1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
-      "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/backgroundPh.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\backgroundPh.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\dogtravelfrontpage.png"
     },
     {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\OfferImages\\46bc521d4b585c5a34b6aa63c6fedc4e235825631.webp",
@@ -1343,12 +1292,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\OfferImages\\winter232011829.png"
     },
     {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\people.png",
+      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\download233125444.png",
       "SourceId": "WA_TravelAgency_v1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
       "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/people.png",
+      "RelativePath": "Images/PromotionImages/download233125444.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1357,7 +1306,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\people.png"
+      "OriginalItemSpec": "wwwroot\\Images\\PromotionImages\\download233125444.png"
     },
     {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\PromotionImages\\promotion1235600504.png",
@@ -1375,23 +1324,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\PromotionImages\\promotion1235600504.png"
-    },
-    {
-      "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\Images\\travel.jpg",
-      "SourceId": "WA_TravelAgency_v1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\",
-      "BasePath": "_content/WA_TravelAgency_v1",
-      "RelativePath": "Images/travel.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\travel.jpg"
     },
     {
       "Identity": "C:\\Users\\magda\\source\\repos\\WA_TravelAgency_v1\\WA_TravelAgency_v1\\wwwroot\\js\\site.js",
