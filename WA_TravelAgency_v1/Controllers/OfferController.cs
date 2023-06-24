@@ -41,6 +41,7 @@ namespace WA_TravelAgency_v1.Controllers
         }
 
         // GET: Offer/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.Offers == null)
@@ -256,7 +257,14 @@ namespace WA_TravelAgency_v1.Controllers
             _context.Add(newReservation);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index","Reservation");
+            if (User.IsInRole("User"))
+            {
+                return RedirectToAction("MyReservations", "Reservation");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Reservation");
+            }
         }
 
         public async Task<IActionResult> SendMail()
@@ -314,5 +322,12 @@ namespace WA_TravelAgency_v1.Controllers
             return View(offers);
         }
 
+        public async Task<IActionResult> PromotionOffers()
+        {
+            List<Offer> offers = new List<Offer>();
+            offers = await _context.Offers.Include(o => o.Destination).Include(o => o.Transport).Include(o => o.Promotion).Where(m => m.Promotion != null).ToListAsync();
+
+            return View(offers);
+        }
     }
 }

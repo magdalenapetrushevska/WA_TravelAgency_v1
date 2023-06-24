@@ -6,15 +6,11 @@
 
 <h1>All Offers</h1>
 
-
-@*
-<p>
-    <a asp-action="SendMail" class="btn d-inline mr-2" style="background-color: chocolate;">
-        Send email
-    </a>
-</p>*@
-
 <div class="row">
+
+@if (!User.IsInRole("User")){
+
+
     <div class="col-3">
         <div class="mt-2">
             <a asp-action="Create" class="btn btn-success ml-5" style="background-color:#9cc69b; color:black">
@@ -25,9 +21,24 @@
          </div>
                     
 </div>
+}
+
 
   <div class="col-3"></div>
-  <div class="col-3"></div>
+
+    <div class="col-3">
+         <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter offers
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a asp-action="SummerOffers" class="dropdown-item"> Summer offers </a></li>
+    <li><a asp-action="WinterOffers" class="dropdown-item"> Winter offers </a></li>
+    <li> <a asp-action="PromotionOffers" class="dropdown-item"> Promotions </a></li>
+  </ul>
+  </div>
+    </div>
+
 
     <div class="col-3">
         <form asp-action="SearchOffer" enctype="multipart/form-data" method="post">
@@ -47,29 +58,6 @@
     </div>
 </div>
 
-<div class="container mt-3 mb-3" style="width: 65rem;">
-    <div class="row pl-4 ml-4">
-
-        <div class="col-3"></div>
-        <div class="col-3">
-            <a asp-action="WinterOffers" class="btn btn-lg btn-primary btn-block" style="background-color:#7978E9">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="darkblue" class="bi bi-snow2" viewBox="0 0 16 16">
-                    <path d="M8 16a.5.5 0 0 1-.5-.5v-1.293l-.646.647a.5.5 0 0 1-.707-.708L7.5 12.793v-1.086l-.646.647a.5.5 0 0 1-.707-.708L7.5 10.293V8.866l-1.236.713-.495 1.85a.5.5 0 1 1-.966-.26l.237-.882-.94.542-.496 1.85a.5.5 0 1 1-.966-.26l.237-.882-1.12.646a.5.5 0 0 1-.5-.866l1.12-.646-.884-.237a.5.5 0 1 1 .26-.966l1.848.495.94-.542-.882-.237a.5.5 0 1 1 .258-.966l1.85.495L7 8l-1.236-.713-1.849.495a.5.5 0 1 1-.258-.966l.883-.237-.94-.542-1.85.495a.5.5 0 0 1-.258-.966l.883-.237-1.12-.646a.5.5 0 1 1 .5-.866l1.12.646-.237-.883a.5.5 0 0 1 .966-.258l.495 1.849.94.542-.236-.883a.5.5 0 0 1 .966-.258l.495 1.849 1.236.713V5.707L6.147 4.354a.5.5 0 1 1 .707-.708l.646.647V3.207L6.147 1.854a.5.5 0 1 1 .707-.708l.646.647V.5a.5.5 0 0 1 1 0v1.293l.647-.647a.5.5 0 1 1 .707.708L8.5 3.207v1.086l.647-.647a.5.5 0 1 1 .707.708L8.5 5.707v1.427l1.236-.713.495-1.85a.5.5 0 1 1 .966.26l-.236.882.94-.542.495-1.85a.5.5 0 1 1 .966.26l-.236.882 1.12-.646a.5.5 0 0 1 .5.866l-1.12.646.883.237a.5.5 0 1 1-.26.966l-1.848-.495-.94.542.883.237a.5.5 0 1 1-.26.966l-1.848-.495L9 8l1.236.713 1.849-.495a.5.5 0 0 1 .259.966l-.883.237.94.542 1.849-.495a.5.5 0 0 1 .259.966l-.883.237 1.12.646a.5.5 0 0 1-.5.866l-1.12-.646.236.883a.5.5 0 1 1-.966.258l-.495-1.849-.94-.542.236.883a.5.5 0 0 1-.966.258L9.736 9.58 8.5 8.866v1.427l1.354 1.353a.5.5 0 0 1-.707.708l-.647-.647v1.086l1.354 1.353a.5.5 0 0 1-.707.708l-.647-.647V15.5a.5.5 0 0 1-.5.5z" />
-                </svg> Winter offers
-            </a>
-        </div>
-        <div class="col-3">
-            <a asp-action="SummerOffers" class="btn btn-lg btn-danger btn-block" style="background-color:#F3797E">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
-                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
-                </svg> Summer offers
-            </a>
-        </div>
-        <div class="col-3"></div>
-    </div>
-    <br />
-    <br />
-
 
     <div class="container mt-2">
 
@@ -83,44 +71,72 @@
                 @:<div class="row mb-5">
                 }
 
+                
 
-                <div class="col-4">
+  <div class="container col-4 p-3">
+    <div class="row justify-content-center">
+      <div class="">
+        <div class="card text-black">
+             <a asp-action="Details" asp-route-id="@item.Id">
+                <img src="~/Images/OfferImages/@item.ImageName" width="200px" height="200px" class="card-img-top" alt="Apple Computer" />
+            </a>
+          <div class="card-body">
+            <div class="text-center">
+              <h5 class="card-title">@item.Name</h5>
 
-                    <div class="card" style="width: 20rem; height: auto;">
-                        
-                        <a asp-action="Details" asp-route-id="@item.Id">  <img class="card-img-top" src="~/Images/OfferImages/@item.ImageName" alt="Image for offer!" /> </a>
-
-                        <div class="card-body mt-2 mb-0">
-
-                            <h3 class="card-title d-inline mr-5 ml-4">@item.Name</h3>
-
-                            <a asp-action="CreateMyReservation" asp-controller = "Reservation" asp-route-id="@item.Id" class="btn btn-primary" style="background-color:#01baef">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
-                                    <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
-                                </svg> Reserve
-                            </a>
-                            <div class="ml-4 mt-2">
-                                @{
-                                    if (item.OriginalPrice != item.PricePerPerson)
-                                    {
-                                        <h6 style="color: darkblue;">Price: $ @item.PricePerPerson</h6>
-                                    }
-                                    else
-                                    {
-                                       <del> <h6 style="color:red">Original Price: $ @item.OriginalPrice</h6> </del>
-                                        <h6 style="color:darkblue">Promotion Price: $ @item.PricePerPerson</h6>
-                                    }
-                                }
-
-                                
-                            </div>
-
-                            
-                        </div>
-                        
-
+               @if (User.IsInRole("User"))
+        {
+                <a class="btn btn-outline-success mr-4" asp-action="CreateMyReservation" asp-controller="Reservation" asp-route-id="@item.Id">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
+                </svg> Reserve
+                </a>
+            }
+            else
+            {
+                <a class="btn btn-outline-success mr-4" asp-action="Create" asp-controller="Reservation" asp-route-id="@item.Id">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
+                    </svg> Reserve
+                </a>
+            }
+            </div>
+            <div>
+              <div class="d-flex justify-content-between">
+                <span>Destination</span><span>@item.Destination.City</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>From date</span><span>@item.FromDate</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>To date</span><span>@item.ToDate</span>
+              </div>
+            </div>
+             @{
+                if (item.OriginalPrice != item.PricePerPerson)
+                {
+                    <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                        <span style="color:red">Original price</span><span style="color:red"><del>$@item.OriginalPrice</del></span>
                     </div>
-                </div>
+                    <div class="d-flex justify-content-between total font-weight-bold mt-1">
+                        <span>Promotion price</span><span>$@item.PricePerPerson</span>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                        <span>Price</span><span>$@item.PricePerPerson</span>
+                    </div>
+                }
+              }
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -135,40 +151,3 @@
 
 
 
-
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6 col-xl-4">
-        <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-          <img src="~/Images/OfferImages/travelOffer1231212193.png"
-            class="card-img-top" alt="Apple Computer" />
-          <div class="card-body">
-            <div class="text-center">
-              <h5 class="card-title">Believing is seeing</h5>
-              @*<p class="text-muted mb-4">Apple pro display XDR</p>*@
-               <a asp-action="CreateMyReservation" asp-controller = "Reservation" asp-route-id="9" class="btn btn-primary mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-handbag" viewBox="0 0 16 16">
-                                    <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />
-                                </svg> Reserve
-                            </a>
-            </div>
-            <div>
-              <div class="d-flex justify-content-between">
-                <span>Destination</span><span>New York</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>From date</span><span>24/06/2023</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>To date</span><span>29/06/2023</span>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Price</span><span>$7,197.00</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>

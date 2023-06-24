@@ -23,6 +23,8 @@ using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
 using ExcelDataReader;
 using DocumentFormat.OpenXml.Bibliography;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace WA_TravelAgency_v1.Controllers
 {
@@ -250,6 +252,23 @@ namespace WA_TravelAgency_v1.Controllers
                 payReservation.Paid = NoYes.Yes;
                 _context.Reservation.Update(payReservation);
                 await _context.SaveChangesAsync();
+
+                var email = new MimeMessage();
+                var body = "This email serves as a confirmation that payment has been done.\n "+"Offer:  "+ payReservation.OfferId.ToString() +"\n Amount paid: "+ payReservation.AmountToPay.ToString();
+                email.From.Add(MailboxAddress.Parse("tatyana.von22@ethereal.email"));
+                email.To.Add(MailboxAddress.Parse("tatyana.von22@ethereal.email"));
+
+                email.Subject = "Payment Confirmation";
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = body };
+
+                using var smtp = new SmtpClient();
+                smtp.Connect("smtp.ethereal.email", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                smtp.Authenticate("tatyana.von22@ethereal.email", "g34nXAWsR5Yfu18up1");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+
+
+
                 if (User.IsInRole("User"))
                 {
                     return RedirectToAction("MyReservations", "Reservation");

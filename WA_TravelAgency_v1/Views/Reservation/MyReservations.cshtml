@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-3">
         <div class="mt-2">
-            <a asp-action="Create" class="btn btn-success ml-5" style="background-color:#9cc69b; color:black">
+            <a asp-action="Index" asp-controller="Offer" class="btn btn-success ml-5" style="background-color:#9cc69b; color:black">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg>   Create new Reservation
@@ -86,20 +86,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NumOfGratis)
             </td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Actions
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Edit</a></li>
-                        <li><a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Delete</a></li>
-                    </ul>
-                </div>
-            </td>
-                <td>
-                    <a class="btn btn-outline-secondary" asp-action="CreateInvoice" asp-route-id="@item.Id">Create Invoice</a>
-                </td>
+          
+
                 <td>
                     @if (item.Paid.ToString() == "No")
                     {
