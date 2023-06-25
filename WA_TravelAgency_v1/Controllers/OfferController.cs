@@ -67,8 +67,9 @@ namespace WA_TravelAgency_v1.Controllers
         // GET: Offer/Create
         public IActionResult Create()
         {
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Country");
-            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id");
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "City");
+            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Company");
+
             return View();
         }
 
@@ -77,7 +78,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,TransportId,DestinationId,Type,PricePerPerson,FromDate,ToDate,Status,ImageFile,Id")] Offer offer)
+        public async Task<IActionResult> Create([Bind("Name,TransportId,DestinationId,Type,PricePerPerson,FromDate,ToDate,Status,ImageFile,inNumOfPassForGratis,Id")] Offer offer)
         {
             Destination chosenDestinaion = _context.Destinatons.Find(offer.DestinationId);
             offer.Destination = chosenDestinaion;
@@ -103,8 +104,8 @@ namespace WA_TravelAgency_v1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
-            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "City", offer.DestinationId);
+            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Company", offer.TransportId);
             return View(offer);
         }
 
@@ -121,8 +122,8 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 return NotFound();
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
-            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "City", offer.DestinationId);
+            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Company", offer.TransportId);
             return View(offer);
         }
 
@@ -131,7 +132,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Name,TransportId,DestinationId,Type,PricePerPerson,OriginalPrice,FromDate,ToDate,Status,ImageFile,Id")] Offer offer)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Name,TransportId,DestinationId,Type,PricePerPerson,OriginalPrice,FromDate,ToDate,Status,ImageFile,МinNumOfPassForGratis,Id")] Offer offer)
         {
             if (id != offer.Id)
             {
@@ -142,15 +143,18 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 try
                 {
-                    //Save image to wwwroot/image
-                    string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Path.GetFileNameWithoutExtension(offer.ImageFile.FileName);
-                    string extension = Path.GetExtension(offer.ImageFile.FileName);
-                    offer.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    string path = Path.Combine(wwwRootPath + "/Images/OfferImages", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    if (offer.ImageFile != null)
                     {
-                        await offer.ImageFile.CopyToAsync(fileStream);
+                        //Save image to wwwroot/image
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(offer.ImageFile.FileName);
+                        string extension = Path.GetExtension(offer.ImageFile.FileName);
+                        offer.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        string path = Path.Combine(wwwRootPath + "/Images/OfferImages", fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await offer.ImageFile.CopyToAsync(fileStream);
+                        }
                     }
 
                     _context.Update(offer);
@@ -169,8 +173,8 @@ namespace WA_TravelAgency_v1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "Id", offer.DestinationId);
-            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Id", offer.TransportId);
+            ViewData["DestinationId"] = new SelectList(_context.Destinatons, "Id", "City", offer.DestinationId);
+            ViewData["TransportId"] = new SelectList(_context.Transport, "Id", "Company", offer.TransportId);
             return View(offer);
         }
 
@@ -239,7 +243,7 @@ namespace WA_TravelAgency_v1.Controllers
 
             if (chosenOffer.МinNumOfPassForGratis != 0 && chosenOffer.МinNumOfPassForGratis <= newReservation.NumOfPassengers)
             {
-                var numOfGratis = newReservation.NumOfPassengers % chosenOffer.МinNumOfPassForGratis;
+                var numOfGratis = newReservation.NumOfPassengers / chosenOffer.МinNumOfPassForGratis;
                 newReservation.AmountToPay = chosenOffer.PricePerPerson * (newReservation.NumOfPassengers - numOfGratis);
                 newReservation.NumOfGratis = numOfGratis;
             }
@@ -266,6 +270,83 @@ namespace WA_TravelAgency_v1.Controllers
                 return RedirectToAction("Index", "Reservation");
             }
         }
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MakeAReservationByEmployee(Guid id, [Bind("ReservedBy,NumOfPassengers")] Reservation resevation)
+        {
+            Reservation newReservation = new Reservation();
+
+            newReservation.Id = Guid.NewGuid();
+            newReservation.OfferId = id;
+
+            var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var loggedInUser = _context.Users.Find(loggedInUserId);
+            newReservation.UserId = loggedInUserId;
+            newReservation.Passenger = loggedInUser;
+            newReservation.ReservationDate = DateTime.Now;
+            newReservation.NumOfPassengers = resevation.NumOfPassengers;
+            newReservation.ReservedBy = resevation.ReservedBy;
+
+            Offer chosenOffer = _context.Offers.Find(newReservation.OfferId);
+
+            if (chosenOffer.МinNumOfPassForGratis != 0 && chosenOffer.МinNumOfPassForGratis <= newReservation.NumOfPassengers)
+            {
+                var numOfGratis = newReservation.NumOfPassengers / chosenOffer.МinNumOfPassForGratis;
+                newReservation.AmountToPay = chosenOffer.PricePerPerson * (newReservation.NumOfPassengers - numOfGratis);
+                newReservation.NumOfGratis = numOfGratis;
+            }
+            else
+            {
+                newReservation.AmountToPay = chosenOffer.PricePerPerson * newReservation.NumOfPassengers;
+                newReservation.NumOfGratis = 0;
+            }
+            newReservation.AmountPaid = Constants.initialPaidAmount;
+            newReservation.Paid = NoYes.No;
+            newReservation.Status = OfferStatus.Active;
+
+
+
+            _context.Add(newReservation);
+            await _context.SaveChangesAsync();
+
+            if (User.IsInRole("User"))
+            {
+                return RedirectToAction("MyReservations", "Reservation");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Reservation");
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePromotion(Guid id, [Bind("Discount,StartDateOfPromotion,EndDateOfPromotion")] Promotion promotion)
+        {
+            Promotion newPromotion = new Promotion();
+
+            newPromotion.Id = Guid.NewGuid();
+            newPromotion.OfferId = id;
+
+            newPromotion.Discount = promotion.Discount;
+            newPromotion.StartDateOfPromotion = promotion.StartDateOfPromotion;
+            newPromotion.EndDateOfPromotion = promotion.EndDateOfPromotion;
+
+            Offer chosenOffer = _context.Offers.Find(newPromotion.OfferId);
+            chosenOffer.PromotionId = newPromotion.Id;
+            chosenOffer.PricePerPerson = chosenOffer.PricePerPerson - (chosenOffer.PricePerPerson * promotion.Discount / 100);
+
+            _context.Add(newPromotion);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Offer");
+        }
+
 
         public async Task<IActionResult> SendMail()
         {

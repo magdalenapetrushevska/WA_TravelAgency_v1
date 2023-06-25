@@ -67,9 +67,9 @@ namespace WA_TravelAgency_v1.Controllers
         }
 
         // GET: Reservation/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid? id)
         {
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", id);
             return View();
         }
 
@@ -90,9 +90,9 @@ namespace WA_TravelAgency_v1.Controllers
                 reservation.ReservedBy = reservation.ReservedBy;
 
                 Offer chosenOffer = _context.Offers.Find(reservation.OfferId);
-                if(chosenOffer.МinNumOfPassForGratis <= reservation.NumOfPassengers)
+                if (chosenOffer.МinNumOfPassForGratis != 0 && chosenOffer.МinNumOfPassForGratis <= reservation.NumOfPassengers)
                 {
-                    var numOfGratis = reservation.NumOfPassengers % chosenOffer.МinNumOfPassForGratis;
+                    var numOfGratis = reservation.NumOfPassengers / chosenOffer.МinNumOfPassForGratis;
                     reservation.AmountToPay = chosenOffer.PricePerPerson * (reservation.NumOfPassengers - numOfGratis);
                     reservation.NumOfGratis = numOfGratis;
                 }
@@ -110,7 +110,7 @@ namespace WA_TravelAgency_v1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", reservation.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", reservation.OfferId);
             return View(reservation);
         }
 
@@ -127,7 +127,7 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 return NotFound();
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", reservation.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", reservation.OfferId);
             return View(reservation);
         }
 
@@ -163,7 +163,7 @@ namespace WA_TravelAgency_v1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", reservation.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", reservation.OfferId);
             return View(reservation);
         }
 
@@ -426,7 +426,7 @@ namespace WA_TravelAgency_v1.Controllers
         // CreateMyReservation
         public IActionResult CreateMyReservation(Guid? id)
         {
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", id);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", id);
             return View();
         }
     }

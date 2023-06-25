@@ -10,17 +10,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="CreatePromotion" asp-controller="Offer" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group mb-3">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="OfferId" class="control-label"></label>
-                <select asp-for="OfferId" class ="form-control" asp-items="ViewBag.OfferId"></select>
-            </div>
             <div class="form-group mb-3">
                 <label asp-for="Discount" class="control-label"></label>
                 <input asp-for="Discount" class="form-control" />
@@ -36,11 +27,8 @@
                 <input asp-for="EndDateOfPromotion" class="form-control" />
                 <span asp-validation-for="EndDateOfPromotion" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="ImageFile" class="control-label"></label> <br />
-                <input asp-for="ImageFile" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
+
+            <input type="hidden" asp-for="Id" />
             <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -49,7 +37,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Offer">Back to List</a>
 </div>
 
 @section Scripts {

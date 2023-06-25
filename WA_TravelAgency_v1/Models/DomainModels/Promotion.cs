@@ -7,7 +7,7 @@ namespace WA_TravelAgency_v1.Models.DomainModels
     [Table("Promotion")]
     public class Promotion : BaseEntity
     {
-        public string Title { get; set; }
+        public string? Title { get; set; }
         public Guid? OfferId { get; set; }
         public Offer? Offer { get; set; }
         public int Discount { get; set; }

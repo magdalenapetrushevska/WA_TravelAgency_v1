@@ -49,9 +49,9 @@ namespace WA_TravelAgency_v1.Controllers
         }
 
         // GET: Promotion/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid? id)
         {
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", id);
             return View();
         }
 
@@ -85,7 +85,7 @@ namespace WA_TravelAgency_v1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", promotion.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", promotion.OfferId);
             return View(promotion);
         }
 
@@ -102,7 +102,7 @@ namespace WA_TravelAgency_v1.Controllers
             {
                 return NotFound();
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", promotion.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", promotion.OfferId);
             return View(promotion);
         }
 
@@ -111,7 +111,7 @@ namespace WA_TravelAgency_v1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Title,OfferId,Discount,StartDateOfPromotion,EndDateOfPromotion,ImageFile,Id")] Promotion promotion)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Discount,StartDateOfPromotion,EndDateOfPromotion,Id")] Promotion promotion)
         {
             if (id != promotion.Id)
             {
@@ -149,7 +149,7 @@ namespace WA_TravelAgency_v1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", promotion.OfferId);
+            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Name", promotion.OfferId);
             return View(promotion);
         }
 
@@ -182,6 +182,8 @@ namespace WA_TravelAgency_v1.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Promotions'  is null.");
             }
             var promotion = await _context.Promotions.FindAsync(id);
+            Offer chosenOffer = await _context.Offers.FindAsync(promotion.OfferId);
+            chosenOffer.PromotionId = null;
             if (promotion != null)
             {
                 _context.Promotions.Remove(promotion);
